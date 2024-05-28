@@ -4,7 +4,7 @@ import MyComponent from "./myComponent";
 function FetchDataFromApi()
 {
     const[data,setData]=useState(null);
-    const[value,setValue]=useState("");
+    const[count,setCount]=useState(0);
 
     const handleFetchData=useCallback(async()=>
         {
@@ -12,6 +12,7 @@ function FetchDataFromApi()
                 const response=await fetch("https://fakestoreapi.com/products");
                 const data=await response.json();
                 setData(data);
+                console.log(data);
                 }
                 catch(error)
                 {
@@ -22,7 +23,7 @@ function FetchDataFromApi()
 
         const handleClick=()=>
             {
-                setValue("preethi");
+                setCount(count+1);
 
             }
         
@@ -32,8 +33,8 @@ function FetchDataFromApi()
                     {data ? (<div>Data fetched:{JSON.stringify(data)}</div>):
                     (<p>No data fetched yet.</p>)
                 }
-                <button style={{backgroundColor:"pink",width:"200px"}} onClick={handleClick}>Render Memoized Component</button><br/><br/>
-                { <MyComponent value={value} />}
+                <button style={{backgroundColor:"pink",width:"200px"}} onClick={handleClick}>Increment count</button><br/><br/>
+                { <MyComponent value={count} />}
             </div>
         )
 }

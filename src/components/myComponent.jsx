@@ -5,7 +5,7 @@ function MyComponent(props)
     return(
         <div>
             {props.value}
-           {/* { console.log("mycomponent")} */}
+           { console.log("mycomponent")}
         </div>
     )
 }
